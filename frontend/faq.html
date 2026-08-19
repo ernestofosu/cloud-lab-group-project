@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GT Library · GT Library</title>
+<meta name="description" content="GT Library — books, lecture notes, research papers and past examination papers for students and lecturers.">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<!-- Theme -->
+<link href="style.css" rel="stylesheet">
+<script>
+  // Set the theme before first paint to avoid a light/dark flash.
+  (function(){ var t = localStorage.getItem('athenaeum-theme'); if (t) document.documentElement.setAttribute('data-bs-theme', t); })();
+</script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-athenaeum sticky-top py-3">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-mark"><i class="bi bi-book-half"></i></span>GT Library
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link " href="library.html">Library</a></li>
+        <li class="nav-item"><a class="nav-link " href="categories.html">Categories</a></li>
+        <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link " href="faq.html">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link " href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <button class="theme-toggle-btn" type="button" title="Toggle dark mode">
+          <i class="theme-toggle-icon bi bi-moon-stars-fill"></i>
+        </button>
+                  <div class="d-flex align-items-center gap-2" id="auth-nav">
+             <a href="login.html" class="btn btn-outline-primary">Log in</a>
+             <a href="register.html" class="btn btn-gold">Register</a>
+          </div>
+        </div>
+    </div>
+</nav>
+<div id="toast-stack"></div>
+
+
+
+<section class="section-pad">
+  <div class="container content-container-narrow">
+    <div class="section-title mb-4 text-center"><span class="eyebrow">Need help?</span><h1>Frequently asked questions</h1></div>
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item mb-2 border rounded">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+            Who can use GT Library?
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted">GT Library is open to registered students and lecturers of the institution. Students can search, read and download approved resources; lecturers can additionally upload books, lecture notes, research papers and past examination papers.</div>
+        </div>
+      </div>
+      <div class="accordion-item mb-2 border rounded">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+            How do I create an account?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted">Click <a href="register.html">Register</a> and choose whether you're a student or a lecturer. Fill in your details and you'll be able to log in right away.</div>
+        </div>
+      </div>
+      <div class="accordion-item mb-2 border rounded">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+            How does resource approval work?
+          </button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted">Every resource a lecturer uploads is reviewed by a library administrator before it appears in the public catalogue. This keeps the collection accurate, appropriate and well organised.</div>
+        </div>
+      </div>
+      <div class="accordion-item mb-2 border rounded">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+            Can I read resources without downloading them?
+          </button>
+        </h2>
+        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted">Yes. Every resource can be read online in the built-in PDF viewer. Downloading is only available when the lecturer who uploaded it has allowed downloads.</div>
+        </div>
+      </div>
+      <div class="accordion-item mb-2 border rounded">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+            I forgot my password — what do I do?
+          </button>
+        </h2>
+        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted">Go to the <a href="forgot-password.html">login page</a> and select "Forgot password?". You'll receive a reset link by email if the address is registered.</div>
+        </div>
+      </div>
+      <div class="accordion-item mb-2 border rounded">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+            My account was suspended — why?
+          </button>
+        </h2>
+        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted">Accounts are suspended by an administrator, usually after repeated policy violations or at the account holder's request. <a href="contact.html">Contact the library team</a> for details.</div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <p class="text-muted">Still have a question?</p>
+      <a href="contact.html" class="btn btn-primary">Contact the library team</a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer-athenaeum pt-5 pb-4 mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h6 class="mb-3"><i class="bi bi-book-half me-2 text-gold"></i>GT Library</h6>
+        <p class="small">A cloud-based digital library where students and lecturers share books, lecture notes, research papers and past examination papers — anytime, anywhere.</p>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="mb-3">Explore</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><a href="library.html">Library</a></li>
+          <li class="mb-2"><a href="categories.html">Categories</a></li>
+          <li class="mb-2"><a href="about.html">About</a></li>
+          <li class="mb-2"><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="mb-3">Account</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><a href="login.html">Log in</a></li>
+          <li class="mb-2"><a href="register.html">Register</a></li>
+          <li class="mb-2"><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="mb-3">Stay in touch</h6>
+        <p class="small mb-2"><i class="bi bi-geo-alt me-2 text-gold"></i>Tesano, Accra, Ghana</p>
+        <p class="small mb-2"><i class="bi bi-envelope me-2 text-gold"></i>library@gt.edu.gh</p>
+        <p class="small"><i class="bi bi-telephone me-2 text-gold"></i>+233 208 973 467</p>
+      </div>
+    </div>
+    <hr class="border-secondary my-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between small">
+      <span>&copy; 2026 GT Library. All rights reserved.</span>
+      <span>Built with HTML5, CSS3, vanilla JavaScript, Node.js API &amp; deployed on AWS.</span>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="config.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

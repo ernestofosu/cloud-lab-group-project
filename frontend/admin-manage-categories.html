@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GT Library · GT Library</title>
+<meta name="description" content="GT Library — books, lecture notes, research papers and past examination papers for students and lecturers.">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<!-- Theme -->
+<link href="style.css" rel="stylesheet">
+<script>
+  // Set the theme before first paint to avoid a light/dark flash.
+  (function(){ var t = localStorage.getItem('athenaeum-theme'); if (t) document.documentElement.setAttribute('data-bs-theme', t); })();
+</script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-athenaeum sticky-top py-3">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-mark"><i class="bi bi-book-half"></i></span>GT Library
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link " href="library.html">Library</a></li>
+        <li class="nav-item"><a class="nav-link " href="categories.html">Categories</a></li>
+        <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link " href="faq.html">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link " href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <button class="theme-toggle-btn" type="button" title="Toggle dark mode">
+          <i class="theme-toggle-icon bi bi-moon-stars-fill"></i>
+        </button>
+                  <div class="d-flex align-items-center gap-2" id="auth-nav">
+             <a href="login.html" class="btn btn-outline-primary">Log in</a>
+             <a href="register.html" class="btn btn-gold">Register</a>
+          </div>
+        </div>
+    </div>
+</nav>
+<div id="toast-stack"></div>
+
+
+
+<div class="dash-shell">
+  
+<aside class="dash-sidebar">
+  <div class="side-heading">Administration</div>
+  <a class="side-link " href="admin-dashboard.html"><i class="bi bi-speedometer2"></i> Analytics</a>
+  <a class="side-link " href="admin-manage-users.html"><i class="bi bi-people"></i> Manage Users</a>
+  <a class="side-link " href="admin-manage-books.html"><i class="bi bi-journal-check"></i> Manage &amp; Approve Books</a>
+  <a class="side-link " href="admin-manage-categories.html"><i class="bi bi-tags"></i> Manage Categories</a>
+  <a class="side-link " href="admin-manage-announcements.html"><i class="bi bi-megaphone"></i> Announcements</a>
+  <a class="side-link " href="admin-activity-logs.html"><i class="bi bi-list-check"></i> Activity Logs</a>
+  <a class="side-link " href="admin-contact-messages.html"><i class="bi bi-envelope"></i> Contact Messages</a>
+  <div class="side-heading">Account</div>
+  <a class="side-link " href="notifications.html"><i class="bi bi-bell"></i> Notifications</a>
+  <a class="side-link " href="profile.html"><i class="bi bi-person"></i> Profile &amp; Password</a>
+</aside>
+
+  <main class="dash-main">
+    <div class="page-header">
+      <h2 class="mb-1">Manage categories</h2>
+      <p>Subjects used to organise books, notes, papers and past questions.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="catalog-card p-4">
+          <span class="catalog-tab"></span>
+          <h5 class="mb-3"></h5>
+          <form action="admin-admin-save-category.html" method="post" class="needs-validation" novalidate>
+            
+            <input type="hidden" name="category_id" value="">
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" name="name" class="form-control" required maxlength="100" value="">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Description <span class="text-muted small">(optional)</span></label>
+              <textarea name="description" class="form-control" rows="2" maxlength="255"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Bootstrap icon class <span class="text-muted small">(optional)</span></label>
+              <input type="text" name="icon" class="form-control" maxlength="50" placeholder="bi-journal-bookmark" value="">
+              <div class="form-text">See <a href="https://icons.getbootstrap.com" target="_blank" rel="noopener">icons.getbootstrap.com</a> for options.</div>
+            </div>
+            <button class="btn btn-primary px-4" type="submit"></button>
+            <a href="admin-manage-categories.html" class="btn btn-outline-secondary px-4">Cancel</a>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="catalog-card">
+          <span class="catalog-tab"></span>
+          <div class="table-responsive admin-scroll-region">
+            <table class="table table-athenaeum align-middle mb-0">
+              <thead><tr><th>Category</th><th>Resources</th><th></th></tr></thead>
+              <tbody>
+              <!-- Loop Template Start -->
+                <tr>
+                  <td><i class="bi  me-2 text-gold"></i></td>
+                  <td></td>
+                  <td class="text-end">
+                    <div class="d-flex gap-1 justify-content-end">
+                      <a href="" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></a>
+                      <form action="admin-admin-delete-category.html" method="post"
+                            data-confirm="Delete ''?  resource(s) will become uncategorised.">
+                        
+                        <input type="hidden" name="category_id" value="">
+                        <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              <!-- Loop Template End -->
+              <tr><td colspan="3" class="text-center text-muted py-5">No categories yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+<footer class="footer-athenaeum pt-5 pb-4 mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h6 class="mb-3"><i class="bi bi-book-half me-2 text-gold"></i>GT Library</h6>
+        <p class="small">A cloud-based digital library where students and lecturers share books, lecture notes, research papers and past examination papers — anytime, anywhere.</p>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="mb-3">Explore</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><a href="library.html">Library</a></li>
+          <li class="mb-2"><a href="categories.html">Categories</a></li>
+          <li class="mb-2"><a href="about.html">About</a></li>
+          <li class="mb-2"><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="mb-3">Account</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><a href="login.html">Log in</a></li>
+          <li class="mb-2"><a href="register.html">Register</a></li>
+          <li class="mb-2"><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="mb-3">Stay in touch</h6>
+        <p class="small mb-2"><i class="bi bi-geo-alt me-2 text-gold"></i>Tesano, Accra, Ghana</p>
+        <p class="small mb-2"><i class="bi bi-envelope me-2 text-gold"></i>library@gt.edu.gh</p>
+        <p class="small"><i class="bi bi-telephone me-2 text-gold"></i>+233 208 973 467</p>
+      </div>
+    </div>
+    <hr class="border-secondary my-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between small">
+      <span>&copy; 2026 GT Library. All rights reserved.</span>
+      <span>Built with HTML5, CSS3, vanilla JavaScript, Node.js API &amp; deployed on AWS.</span>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="config.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

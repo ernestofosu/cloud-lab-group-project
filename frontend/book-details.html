@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GT Library · GT Library</title>
+<meta name="description" content="GT Library — books, lecture notes, research papers and past examination papers for students and lecturers.">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<!-- Theme -->
+<link href="style.css" rel="stylesheet">
+<script>
+  // Set the theme before first paint to avoid a light/dark flash.
+  (function(){ var t = localStorage.getItem('athenaeum-theme'); if (t) document.documentElement.setAttribute('data-bs-theme', t); })();
+</script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-athenaeum sticky-top py-3">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-mark"><i class="bi bi-book-half"></i></span>GT Library
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link " href="library.html">Library</a></li>
+        <li class="nav-item"><a class="nav-link " href="categories.html">Categories</a></li>
+        <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link " href="faq.html">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link " href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <button class="theme-toggle-btn" type="button" title="Toggle dark mode">
+          <i class="theme-toggle-icon bi bi-moon-stars-fill"></i>
+        </button>
+                  <div class="d-flex align-items-center gap-2" id="auth-nav">
+             <a href="login.html" class="btn btn-outline-primary">Log in</a>
+             <a href="register.html" class="btn btn-gold">Register</a>
+          </div>
+        </div>
+    </div>
+</nav>
+<div id="toast-stack"></div>
+
+<section class="section-pad">
+  <div class="container">
+    <div id="book-details-content">
+      <p class="text-muted text-center py-5">Loading&hellip;</p>
+    </div>
+
+    <div class="mt-5 pt-4 border-top review-section-hidden" id="reviews-section">
+      <h2 class="mb-4">Reader reviews</h2>
+      <div id="reviews-list" class="mb-4"></div>
+      <div id="review-form-wrap" class="catalog-card p-4 review-form-hidden">
+        <h5 class="mb-3">Write a review</h5>
+        <form id="review-form">
+          <div class="star-input mb-3">
+            <i class="bi bi-star fs-4 me-1" role="button"></i><i class="bi bi-star fs-4 me-1" role="button"></i><i class="bi bi-star fs-4 me-1" role="button"></i><i class="bi bi-star fs-4 me-1" role="button"></i><i class="bi bi-star fs-4" role="button"></i>
+            <input type="hidden" name="rating" value="0">
+          </div>
+          <textarea name="comment" class="form-control mb-3" rows="3" placeholder="Share your thoughts (optional)"></textarea>
+          <button class="btn btn-primary" type="submit"><i class="bi bi-send me-1"></i>Submit review</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-athenaeum pt-5 pb-4 mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h6 class="mb-3"><i class="bi bi-book-half me-2 text-gold"></i>GT Library</h6>
+        <p class="small">A cloud-based digital library where students and lecturers share books, lecture notes, research papers and past examination papers — anytime, anywhere.</p>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="mb-3">Explore</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><a href="library.html">Library</a></li>
+          <li class="mb-2"><a href="categories.html">Categories</a></li>
+          <li class="mb-2"><a href="about.html">About</a></li>
+          <li class="mb-2"><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="mb-3">Account</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><a href="login.html">Log in</a></li>
+          <li class="mb-2"><a href="register.html">Register</a></li>
+          <li class="mb-2"><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="mb-3">Stay in touch</h6>
+        <p class="small mb-2"><i class="bi bi-geo-alt me-2 text-gold"></i>Tesano, Accra, Ghana</p>
+        <p class="small mb-2"><i class="bi bi-envelope me-2 text-gold"></i>library@gt.edu.gh</p>
+        <p class="small"><i class="bi bi-telephone me-2 text-gold"></i>+233 208 973 467</p>
+      </div>
+    </div>
+    <hr class="border-secondary my-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between small">
+      <span>&copy; 2026 GT Library. All rights reserved.</span>
+      <span>Built with HTML5, CSS3, vanilla JavaScript, Node.js API &amp; deployed on AWS.</span>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="config.js"></script>
+<script src="main.js"></script>
+<script>
+(async function () {
+  const bookId = new URLSearchParams(window.location.search).get('id');
+  const contentEl = document.getElementById('book-details-content');
+  if (!bookId) {
+    contentEl.innerHTML = '<p class="text-muted text-center py-5">No resource specified.</p>';
+    return;
+  }
+
+  let book;
+  try {
+    book = await window.api.get(`/api/books/${bookId}`);
+  } catch (err) {
+    contentEl.innerHTML = `<p class="text-muted text-center py-5">This resource could not be found.</p>`;
+    return;
+  }
+
+  const icon = { book: 'bi-book', lecture_note: 'bi-journal-text', research_paper: 'bi-file-earmark-text', assignment: 'bi-clipboard-check', past_question: 'bi-file-earmark-ruled' }[book.resource_type] || 'bi-journal-bookmark';
+  const coverHtml = book.cover_image
+    ? `<img src="${window.escapeHtml(book.cover_image)}" alt="${window.escapeHtml(book.title)} cover">`
+    : `<i class="bi ${icon} cover-fallback"></i>`;
+  const uploaderName = [book.uploader_first_name, book.uploader_last_name].filter(Boolean).join(' ') || 'GT Library';
+
+  contentEl.innerHTML = `
+    <div class="row g-4 book-details-grid">
+      <div class="col-lg-4">
+        <div class="catalog-card">
+          <span class="catalog-tab"></span>
+          <div class="cover-wrap">${coverHtml}</div>
+          <div class="p-3 d-grid gap-2">
+            <a href="book-reader.html?id=${book.book_id}" class="btn btn-primary"><i class="bi bi-book me-1"></i> Read online</a>
+            ${book.downloadable ? `<button type="button" class="btn btn-outline-primary" id="download-book-btn"><i class="bi bi-download me-1"></i> Download</button>` : ''}
+            <button type="button" class="btn btn-outline-secondary bookmark-btn-hidden" id="bookmark-btn"><i class="bi bi-bookmark me-1"></i> Bookmark</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <span class="eyebrow">${window.escapeHtml(window.resourceTypeLabel(book.resource_type))}</span>
+        <h1 class="mt-2">${window.escapeHtml(book.title)}</h1>
+        <div class="d-flex align-items-center gap-3 flex-wrap mb-3">
+          <div>${window.starRatingHtml(book.avg_rating, book.review_count)}</div>
+          <span class="text-muted small">by ${window.escapeHtml(book.authors || 'Unknown author')}</span>
+        </div>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          ${book.category_name ? `<span class="category-tag"><i class="bi bi-tag"></i> ${window.escapeHtml(book.category_name)}</span>` : ''}
+          ${book.publication_year ? `<span class="category-tag"><i class="bi bi-calendar3"></i> ${book.publication_year}</span>` : ''}
+          ${book.isbn ? `<span class="category-tag"><i class="bi bi-upc"></i> ${window.escapeHtml(book.isbn)}</span>` : ''}
+          <span class="category-tag"><i class="bi bi-eye"></i> ${(book.views || 0).toLocaleString()} views</span>
+          <span class="category-tag"><i class="bi bi-download"></i> ${(book.downloads_count || 0).toLocaleString()} downloads</span>
+        </div>
+        <p>${window.escapeHtml(book.description || 'No description provided.')}</p>
+        <p class="text-muted small">Uploaded by ${window.escapeHtml(uploaderName)} &middot; ${window.timeAgo(book.created_at)}</p>
+      </div>
+    </div>
+  `;
+
+  const downloadButton = document.getElementById('download-book-btn');
+  if (downloadButton) {
+    downloadButton.addEventListener('click', async () => {
+      downloadButton.disabled = true;
+      try {
+        const result = await window.api.get(`/api/books/${book.book_id}/file`);
+        window.location.href = result.fileUrl;
+      } catch (error) {
+        window.showToast('danger', error.message || 'The file could not be downloaded.');
+        downloadButton.disabled = false;
+      }
+    });
+  }
+  document.title = `${book.title} · GT Library`;
+
+  // Reviews
+  const reviewsSection = document.getElementById('reviews-section');
+  const reviewsList = document.getElementById('reviews-list');
+  reviewsSection.style.display = '';
+  try {
+    const reviews = await window.api.get(`/api/reviews/${bookId}`);
+    reviewsList.innerHTML = reviews.length ? reviews.map((r) => `
+      <div class="border-bottom pb-3 mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <strong>${window.escapeHtml([r.first_name, r.last_name].filter(Boolean).join(' '))}</strong>
+          <span class="small text-muted">${window.timeAgo(r.created_at)}</span>
+        </div>
+        <div class="rating-stars small">${window.starRatingHtml(r.rating)}</div>
+        ${r.comment ? `<p class="mb-0 mt-1">${window.escapeHtml(r.comment)}</p>` : ''}
+      </div>
+    `).join('') : '<p class="text-muted">No reviews yet — be the first to share your thoughts.</p>';
+  } catch (_) {
+    reviewsList.innerHTML = '<p class="text-muted">Couldn\'t load reviews right now.</p>';
+  }
+
+  // Student-only actions: bookmark + review form
+  try {
+    const user = await window.checkAuth();
+    if (user && user.role_name === 'student') {
+      const bookmarkBtn = document.getElementById('bookmark-btn');
+      bookmarkBtn.style.display = '';
+      bookmarkBtn.addEventListener('click', async () => {
+        try {
+          const res = await window.api.post('/api/bookmarks', { book_id: bookId });
+          bookmarkBtn.innerHTML = res.bookmarked
+            ? '<i class="bi bi-bookmark-check-fill me-1"></i> Bookmarked'
+            : '<i class="bi bi-bookmark me-1"></i> Bookmark';
+          window.showToast('success', res.bookmarked ? 'Added to your bookmarks.' : 'Removed from your bookmarks.');
+        } catch (err) {
+          window.showToast('danger', err.message || 'Could not update bookmark.');
+        }
+      });
+
+      const formWrap = document.getElementById('review-form-wrap');
+      formWrap.style.display = '';
+      window.initStarInputs();
+      document.getElementById('review-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const rating = parseInt(form.querySelector('input[name="rating"]').value, 10);
+        const comment = form.querySelector('textarea[name="comment"]').value.trim();
+        if (!rating) {
+          window.showToast('warning', 'Please choose a star rating.');
+          return;
+        }
+        try {
+          await window.api.post('/api/reviews', { book_id: bookId, rating, comment });
+          window.showToast('success', 'Thanks for your review!');
+          location.reload();
+        } catch (err) {
+          window.showToast('danger', err.message || 'Could not submit review.');
+        }
+      });
+    }
+  } catch (_) { /* guests simply don't see bookmark/review controls */ }
+})();
+</script>
+</body>
+</html>

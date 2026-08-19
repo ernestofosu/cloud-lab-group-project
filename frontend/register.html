@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GT Library · GT Library</title>
+<meta name="description" content="GT Library — books, lecture notes, research papers and past examination papers for students and lecturers.">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<!-- Theme -->
+<link href="style.css" rel="stylesheet">
+<script>
+  // Set the theme before first paint to avoid a light/dark flash.
+  (function(){ var t = localStorage.getItem('athenaeum-theme'); if (t) document.documentElement.setAttribute('data-bs-theme', t); })();
+</script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-athenaeum sticky-top py-3">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-mark"><i class="bi bi-book-half"></i></span>GT Library
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link " href="library.html">Library</a></li>
+        <li class="nav-item"><a class="nav-link " href="categories.html">Categories</a></li>
+        <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link " href="faq.html">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link " href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <button class="theme-toggle-btn" type="button" title="Toggle dark mode">
+          <i class="theme-toggle-icon bi bi-moon-stars-fill"></i>
+        </button>
+                  <div class="d-flex align-items-center gap-2" id="auth-nav">
+             <a href="login.html" class="btn btn-outline-primary">Log in</a>
+             <a href="register.html" class="btn btn-gold">Register</a>
+          </div>
+        </div>
+    </div>
+</nav>
+<div id="toast-stack"></div>
+
+
+
+<section class="auth-shell">
+  <div class="row g-0 flex-grow-1 w-100">
+    <div class="col-lg-5 auth-side d-none d-lg-flex">
+      <span class="eyebrow text-gold">Join GT Library</span>
+      <h2 class="text-white mt-2">Create your library account</h2>
+      <p class="auth-side-copy">Register as a student to search, read and bookmark resources, or as a lecturer to contribute books, notes and papers to the shared shelf.</p>
+      <ul class="list-unstyled mt-4 auth-intro-list">
+        <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Free for all registered students and lecturers</li>
+        <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Read online or download where permitted</li>
+        <li class="mb-2"><i class="bi bi-check2-circle text-gold me-2"></i>Track your bookmarks and download history</li>
+      </ul>
+    </div>
+    <div class="col-lg-7 d-flex align-items-center justify-content-center py-5 bg-body-tertiary">
+      <div class="auth-card auth-card--wide p-4 p-md-5">
+        <h3 class="mb-1">Create an account</h3>
+        <p class="text-muted mb-4">It only takes a minute.</p>
+        <div id="register-error" class="alert alert-danger" style="display: none;"></div>
+        <form action="/api/auth/register" method="post" class="needs-validation" novalidate>
+          
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">First name</label>
+              <input type="text" name="first_name" class="form-control" required maxlength="60" value="">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Last name</label>
+              <input type="text" name="last_name" class="form-control" required maxlength="60" value="">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Email address</label>
+              <input type="email" name="email" class="form-control" required maxlength="150" value="">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">I am a</label>
+              <select name="role" class="form-select" required>
+                <option value="">Select role</option>
+                <option value="student" >Student</option>
+                <option value="lecturer" >Lecturer</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Student / Staff ID</label>
+              <input type="text" name="institution_id" class="form-control" maxlength="50" value="">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Department / Faculty</label>
+              <input type="text" name="department" class="form-control" maxlength="100" value="">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Password</label>
+              <div class="input-group">
+                <input type="password" name="password" id="regPassword" class="form-control" required minlength="8">
+                <button class="btn btn-outline-secondary toggle-password" type="button" data-target="#regPassword"><i class="bi bi-eye"></i></button>
+              </div>
+              <div class="form-text">At least 8 characters.</div>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Confirm password</label>
+              <div class="input-group">
+                <input type="password" name="password_confirm" id="regPasswordConfirm" class="form-control" required minlength="8">
+                <button class="btn btn-outline-secondary toggle-password" type="button" data-target="#regPasswordConfirm"><i class="bi bi-eye"></i></button>
+              </div>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-primary w-100 py-2" type="submit">Create account</button>
+            </div>
+          </div>
+        </form>
+        <p class="text-center small text-muted mt-4 mb-0">Already have an account? <a href="login.html">Log in</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer-athenaeum pt-5 pb-4 mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h6 class="mb-3"><i class="bi bi-book-half me-2 text-gold"></i>GT Library</h6>
+        <p class="small">A cloud-based digital library where students and lecturers share books, lecture notes, research papers and past examination papers — anytime, anywhere.</p>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="mb-3">Explore</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><a href="library.html">Library</a></li>
+          <li class="mb-2"><a href="categories.html">Categories</a></li>
+          <li class="mb-2"><a href="about.html">About</a></li>
+          <li class="mb-2"><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-6">
+        <h6 class="mb-3">Account</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><a href="login.html">Log in</a></li>
+          <li class="mb-2"><a href="register.html">Register</a></li>
+          <li class="mb-2"><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6 class="mb-3">Stay in touch</h6>
+        <p class="small mb-2"><i class="bi bi-geo-alt me-2 text-gold"></i>Tesano, Accra, Ghana</p>
+        <p class="small mb-2"><i class="bi bi-envelope me-2 text-gold"></i>library@gt.edu.gh</p>
+        <p class="small"><i class="bi bi-telephone me-2 text-gold"></i>+233 208 973 467</p>
+      </div>
+    </div>
+    <hr class="border-secondary my-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between small">
+      <span>&copy; 2026 GT Library. All rights reserved.</span>
+      <span>Built with HTML5, CSS3, vanilla JavaScript, Node.js API &amp; deployed on AWS.</span>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="config.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
